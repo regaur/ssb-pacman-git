@@ -1,0 +1,5 @@
+pkg/
+ssb-pacman
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+
