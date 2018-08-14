@@ -1,0 +1,13 @@
+username=ssb-pacman
+
+pre_install () {
+  id -u ${username} || useradd -U --system ${username}
+}
+
+post_install () {
+  chown -R ${username}:${username} /var/ssb-pacman
+}
+
+post_remove () {
+  id -u ${username} && userdel --remove ${username}
+}

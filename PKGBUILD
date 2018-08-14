@@ -1,8 +1,8 @@
 # Maintainer: Jan Boelsche <jan@lagomorph.de>
 
 pkgname=ssb-pacman-git
-pkgver=1.0.0.r51.7bcc1a6
-pkgrel=1
+pkgver=1.0.0.r52.af12586
+pkgrel=2
 pkgdesc="Secure-Scuttlebutt-based pacman backend for reproducable installs"
 arch=('x86_64')
 url=""
@@ -15,14 +15,14 @@ conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-install=
+install=${pkgname}.install
 source=('ssb-pacman.service' 'config' 'git+ssh://git@github.com/regular/ssb-pacman.git')
 noextract=()
 
-sha256sums=('09493f9f3edc39ea61c58da30ab2b1df803b65734437e946d1276c0c74d1a5ca'
+sha256sums=('462f043028a87c444bdc26880d0a7cdc6a3061640a8337616d7a36d643412248'
             '2d198038f419c5bda2a30addb06c7337cebe05ec529afe18413a34ba43d14cbf'
             'SKIP')
- 
+
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
   printf "%s.r%s.%s" "$(node -e 'console.log(require("./package.json").version)')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -38,6 +38,6 @@ package () {
 	cd "$srcdir/${pkgname%-git}"
   local _npmdir="${pkgdir}/usr/lib/node_modules/"
   mkdir -p $_npmdir
-  npm install -g --prefix "${pkgdir}/usr" 
+  npm install -g --prefix "${pkgdir}/usr" regular/ssb-pacman
   ln -s /usr/lib/node_modules/ssb-pacman "${pkgdir}/var/ssb-pacman/node_modules/"
 }

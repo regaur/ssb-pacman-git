@@ -3,8 +3,8 @@ Description=ssb-pacman mirror server
 After=network.target
 
 [Service]
-User=regular
-Group=regular
+User=ssb-pacman
+Group=ssb-pacman
 Environment="ssb_appname=ssb-pacman"
 Environment="nodebin=/usr/bin"
 ExecStart=/usr/bin/bash -xc '${nodebin}/node ${nodebin}/sbot server'
