@@ -2,7 +2,7 @@
 
 pkgname=ssb-pacman-git
 pkgver=1.0.0.r52.af12586
-pkgrel=2
+pkgrel=3
 pkgdesc="Secure-Scuttlebutt-based pacman backend for reproducable installs"
 arch=('x86_64')
 url=""
@@ -31,7 +31,7 @@ pkgver() {
 package () {
   install -Dm 644 -t "${pkgdir}/usr/lib/systemd/system" "ssb-pacman.service"
   install -Dm 644 -t "${pkgdir}/etc/ssb-pacman" "config"
-  install -Dm 664 -d "${pkgdir}/var/ssb-pacman/node_modules"
+  install -Dm 775 -d "${pkgdir}/var/ssb-pacman/node_modules"
 
   source "$HOME/.nvm/nvm.sh"
   nvm use 10.8.0
