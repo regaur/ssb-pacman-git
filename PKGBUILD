@@ -1,8 +1,8 @@
 # Maintainer: Jan Boelsche <jan@lagomorph.de>
 
 pkgname=ssb-pacman-git
-pkgver=1.0.0.r52.af12586
-pkgrel=3
+pkgver=1.0.0.r53.20c743f
+pkgrel=1
 pkgdesc="Secure-Scuttlebutt-based pacman backend for reproducable installs"
 arch=('x86_64')
 url=""
