@@ -1,14 +1,18 @@
 # Maintainer: Jan Boelsche <jan@lagomorph.de>
 
 pkgname=ssb-pacman-git
-pkgver=1.0.0.r54.c9cc6fb
+pkgver=1.0.0.r56.2b1b67a
 pkgrel=2
 pkgdesc="Secure-Scuttlebutt-based pacman backend for reproducable installs"
 arch=('x86_64')
 url=""
 license=('GPL')
 groups=()
-depends=('scuttlebot')
+depends=(
+  'scuttlebot'
+  'ssb-autofollow-git'
+  'ssb-autoname'
+)
 makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -19,7 +23,7 @@ install=${pkgname}.install
 source=('ssb-pacman.service' 'git+ssh://git@github.com/regular/ssb-pacman.git')
 noextract=()
 
-sha256sums=('462f043028a87c444bdc26880d0a7cdc6a3061640a8337616d7a36d643412248'
+sha256sums=('96144304d74c806992abcc54a8c2cda249aa49d68b5288a7b737cfc40190b264'
             'SKIP')
 
 pkgver() {
@@ -39,5 +43,7 @@ package () {
   local _npmdir="${pkgdir}/usr/lib/node_modules/"
   mkdir -p $_npmdir
   npm install -g --prefix "${pkgdir}/usr" regular/ssb-pacman
-  ln -s /usr/lib/node_modules/ssb-pacman "${pkgdir}/var/ssb-pacman/node_modules/"
+  for plugin in ssb-pacman ssb-autofollow ssb-autoname; do
+    ln -s "/usr/lib/node_modules/${plugin}" "${pkgdir}/var/ssb-pacman/node_modules/"
+  done
 }

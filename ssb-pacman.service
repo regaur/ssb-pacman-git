@@ -7,7 +7,7 @@ User=ssb-pacman
 Group=ssb-pacman
 Environment="ssb_appname=ssb-pacman"
 Environment="nodebin=/usr/bin"
-ExecStart=/usr/bin/bash -xc '${nodebin}/node ${nodebin}/sbot server'
+ExecStart=/usr/bin/bash -xc 'HOST=$(cat /etc/hostname) ${nodebin}/node ${nodebin}/sbot server'
 
 # Restart every >2 seconds to avoid StartLimitInterval failure
 RestartSec=5

@@ -4,9 +4,18 @@ pre_install () {
   id -u ${username} || useradd -U --system ${username}
 }
 
-post_install () {
+_fix_permissions () {
   chown -R ${username}:${username} /var/ssb-pacman
+}
+
+post_install () {
+  _fix_permissions
   systemctl enable ssb-pacman
+}
+
+post_upgrade () {
+  _fix_permissions
+  systemctl restart ssb-pacman
 }
 
 post_remove () {
