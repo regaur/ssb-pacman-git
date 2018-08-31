@@ -3,7 +3,7 @@
 pkgname=ssb-pacman-git
 pkgver=1.0.0.r56.2b1b67a
 pkgrel=2
-pkgdesc="Secure-Scuttlebutt-based pacman backend for reproducable installs"
+pkgdesc="Secure-Scuttlebutt-based pacman back-end for reproducable installs"
 arch=('x86_64')
 url=""
 license=('GPL')
